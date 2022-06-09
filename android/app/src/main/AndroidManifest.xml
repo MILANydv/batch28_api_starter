@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.batch28_api_starter">
+    <uses-permission android:name = "android.permission.CAMERA"/>
+
    <application
         android:label="batch28_api_starter"
         android:name="${applicationName}"
