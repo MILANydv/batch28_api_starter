@@ -1,3 +1,5 @@
+import 'package:batch28_api_starter/repository/user_respository.dart';
+import 'package:batch28_api_starter/utils/display_message.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -8,10 +10,26 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  @override
   final _formKey = GlobalKey<FormState>();
-  final _usernameController = TextEditingController(text: 'admin');
-  final _passwordController = TextEditingController(text: 'admin');
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  _login(String username, String password) async {
+    bool isLogin = await UserRepository().login(username, password);
+    if (isLogin) {
+      _displaymessage(true);
+    } else {
+      _displaymessage(false);
+    }
+  }
+
+  _displaymessage(bool isLogin) {
+    if (isLogin) {
+      Navigator.pushNamed(context, '/dashboard');
+    } else {
+      displayErrorMessage(context, 'Login Failed');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +89,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 50,
                       child: ElevatedButton(
                         onPressed: () {
-                          if (_formKey.currentState!.validate()) {}
+                          if (_formKey.currentState!.validate()) {
+                            _login(
+                              _usernameController.text,
+                              _passwordController.text,
+                            );
+                          }
                         },
                         child: const Text(
                           'Login',
