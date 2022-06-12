@@ -11,13 +11,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(238, 30, 106, 248),
         appBar: AppBar(
           title: const Text('Dashboard'),
           actions: [
             IconButton(
               icon: const Icon(Icons.exit_to_app),
               onPressed: () {
-                Navigator.pushNamed(context, '/login');
+                Navigator.pushNamed(context, '/');
               },
             ),
           ],

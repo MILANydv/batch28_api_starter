@@ -40,13 +40,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 253, 250, 221),
+      backgroundColor: const Color.fromARGB(238, 30, 106, 248),
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Student Registration'),
+        title: const Text('RECAN REGISTRATION'),
+        backgroundColor: const Color.fromARGB(238, 30, 106, 248),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.only(left: 10, right:10, top: 25, bottom: 15),
         child: Form(
           key: _formKey,
           child: SingleChildScrollView(
@@ -56,6 +57,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 TextFormField(
                   controller: _emailController,
                   decoration: const InputDecoration(
+                    fillColor: Color.fromARGB(218, 248, 236, 236),
+                    filled: true,
                     labelText: 'Email',
                     border: OutlineInputBorder(),
                   ),
@@ -66,10 +69,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 10),
                 TextFormField(
                   controller: _addressController,
                   decoration: const InputDecoration(
+                    fillColor: Color.fromARGB(218, 248, 236, 236),
+                    filled: true,
                     labelText: 'Address',
                     border: OutlineInputBorder(),
                   ),
@@ -80,10 +85,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 10),
                 TextFormField(
                   controller: _countryController,
                   decoration: const InputDecoration(
+                    fillColor: Color.fromARGB(218, 248, 236, 236),
+                    filled: true,
                     labelText: 'Country',
                     border: OutlineInputBorder(),
                   ),
@@ -94,10 +101,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 10),
                 TextFormField(
                   controller: _phoneController,
                   decoration: const InputDecoration(
+                    fillColor: Color.fromARGB(218, 248, 236, 236),
+                    filled: true,
                     labelText: 'Phone',
                     border: OutlineInputBorder(),
                   ),
@@ -108,10 +117,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 10),
                 TextFormField(
                   controller: _usernameController,
                   decoration: const InputDecoration(
+                    fillColor: Color.fromARGB(218, 248, 236, 236),
+                    filled: true,
                     labelText: 'Username',
                     border: OutlineInputBorder(),
                   ),
@@ -122,11 +133,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 10),
                 TextFormField(
                   controller: _passwordController,
                   obscureText: true,
                   decoration: const InputDecoration(
+                    fillColor: Color.fromARGB(218, 248, 236, 236),
+                    filled: true,
                     labelText: 'Password',
                     border: OutlineInputBorder(),
                   ),
@@ -137,11 +150,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 10),
                 TextFormField(
                   controller: _confirmPasswordController,
                   obscureText: true,
                   decoration: const InputDecoration(
+                    fillColor: Color.fromARGB(218, 248, 236, 236),
+                    filled: true,
                     labelText: 'Confirm password',
                     border: OutlineInputBorder(),
                   ),
@@ -152,9 +167,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 8),
-                ElevatedButton(
-                  onPressed: () {
+                const SizedBox(height: 25.0),
+                InkWell(
+                  onTap: () {
                     if (_formKey.currentState!.validate()) {
                       User user = User(
                         email: _emailController.text,
@@ -167,14 +182,64 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       _registerUser(user);
                     }
                   },
-                  child: const Text(
-                    'Register',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  child: Container(
+                    padding: const EdgeInsets.only(right: 20, top: 2),
+                    height: 50.0,
+                    width: 135.0,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: const Color.fromARGB(248, 235, 161, 25)),
+                    child: Container(
+                        padding: const EdgeInsets.only(left: 20, top: 0),
+                        child: const Center(
+                            child: Text('SUBMIT',
+                                style: TextStyle(
+                                    fontFamily: 'nunito',
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white)))),
                   ),
-                )
+                ),
+                const SizedBox(height: 18),
+                    SizedBox(
+                      height: 50,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/');
+                        },
+                        child: const Text(
+                          'Back',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Color.fromARGB(255, 255, 255, 255),
+                          ),
+                        ),
+                      ),
+                    ),
+                // const SizedBox(height: 8),
+                // ElevatedButton(
+                //   onPressed: () {
+                //     if (_formKey.currentState!.validate()) {
+                //       User user = User(
+                //         email: _emailController.text,
+                //         address: _addressController.text,
+                //         country: _countryController.text,
+                //         phone: _phoneController.text,
+                //         username: _usernameController.text,
+                //         password: _passwordController.text,
+                //       );
+                //       _registerUser(user);
+                //     }
+                //   },
+
+                //   child: const Text(
+                //     'Register',
+                //     style: TextStyle(
+                //       fontSize: 20,
+                //       fontWeight: FontWeight.bold,
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),

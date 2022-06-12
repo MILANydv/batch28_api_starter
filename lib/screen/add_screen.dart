@@ -53,15 +53,25 @@ class _AddProductState extends State<AddProduct> {
     if (isAdded) {
       displaySuccessMessage(context, 'Product added successfully');
     } else {
-      displayErrorMessage(context, 'Failed to add product');
+      // displayErrorMessage(context, 'Failed to add product');
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(238, 30, 106, 248),
       appBar: AppBar(
-        title: const Text('Add Product'),
+        backgroundColor: const Color.fromARGB(238, 30, 106, 248),
+        title: const Text('Profile'),
+        actions: [
+            IconButton(
+              icon: const Icon(Icons.exit_to_app),
+              onPressed: () {
+                Navigator.pushNamed(context, '/');
+              },
+            ),
+          ],
       ),
       body: Center(
           child: Column(
@@ -78,11 +88,11 @@ class _AddProductState extends State<AddProduct> {
           Row(
             children: [
               ElevatedButton.icon(
-                icon: const Icon(Icons.camera),
+                icon: const Icon(Icons.add_a_photo),
                 onPressed: () {
                   _openCamera();
                 },
-                label: const Text('Camera'),
+                label: const Text(''),
               ),
               const SizedBox(width: 40),
               ElevatedButton.icon(
@@ -90,7 +100,7 @@ class _AddProductState extends State<AddProduct> {
                 onPressed: () {
                   _openImagePicker();
                 },
-                label: const Text('Gallery'),
+                label: const Text(''),
               ),
             ],
           )
