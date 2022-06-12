@@ -1,3 +1,4 @@
+import 'package:batch28_api_starter/screen/HomeScreen.dart';
 import 'package:batch28_api_starter/screen/add_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ void main() {
       routes: {
         '/': (context) => const LoginScreen(),
         '/register': (context) => const RegisterScreen(),
-        '/dashboard': (context) => const DashboardScreen(),
+        '/dashboard': (context) => const HomeScreen(),
         '/add': (context) => const AddProduct(),
       },
     ),
